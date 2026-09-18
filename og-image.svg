@@ -1,0 +1,25 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="1200" height="1200" fill="#0F2D5A"/>
+
+  <!-- MW Mark (centered, large) -->
+  <g transform="translate(600, 520) scale(7.5) translate(-28, -28)">
+    <rect width="56" height="56" rx="11" fill="#0F2D5A"/>
+    <rect x="10" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+    <rect x="40.5" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+    <polygon points="10,10 15.5,10 28,25 22.5,25" fill="#F4F1EA"/>
+    <polygon points="46,10 40.5,10 28,25 33.5,25" fill="#F4F1EA"/>
+    <rect x="10" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+    <rect x="40.5" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+    <polygon points="10,46 15.5,46 28,31 22.5,31" fill="#F4F1EA" opacity="0.38"/>
+    <polygon points="46,46 40.5,46 28,31 33.5,31" fill="#F4F1EA" opacity="0.38"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="600" y="720" text-anchor="middle" font-family="Georgia, serif" font-size="52" font-weight="300" letter-spacing="-1" fill="#F4F1EA" opacity="0.9">matter<tspan font-weight="700">works</tspan></text>
+
+  <!-- Tagline -->
+  <text x="600" y="790" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#F4F1EA" opacity="0.4" letter-spacing="1">Your legal tech team.</text>
+
+</svg>

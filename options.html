@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hero Options Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #D8D5CE;
+      color: #0F1C2E;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    :root {
+      --navy:   #0F2D5A;
+      --cobalt: #1A6BCC;
+      --frost:  #E8EFF8;
+      --canvas: #F4F1EA;
+      --bone:   #DDD9D0;
+      --ink:    #0F1C2E;
+      --stone:  #7A8A9A;
+      --white:  #FFFFFF;
+      --font-mono: 'DM Mono', monospace;
+      --max-w: 1120px;
+      --pad-x: clamp(24px, 5vw, 80px);
+    }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    /* ── Preview chrome ──────────────────────────────── */
+    .preview-section {
+      background: var(--canvas);
+      margin-bottom: 6px;
+      padding-bottom: 80px;
+    }
+
+    .preview-bar {
+      background: var(--ink);
+      padding: 14px 0;
+      margin-bottom: 64px;
+    }
+
+    .preview-bar-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .preview-bar-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--cobalt);
+    }
+
+    .preview-bar-sep {
+      width: 0.5px;
+      height: 14px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .preview-bar-name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: rgba(244,241,234,0.4);
+    }
+
+    /* ── Stub hero headline ──────────────────────────── */
+    .stub {
+      padding-top: 20px;
+      margin-bottom: 0;
+    }
+
+    .stub-headline {
+      font-size: clamp(44px, 7vw, 80px);
+      font-weight: 200;
+      letter-spacing: -0.045em;
+      line-height: 0.97;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .stub-headline em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--cobalt);
+    }
+
+    .stub-sub {
+      font-size: 16px;
+      color: var(--stone);
+      max-width: 480px;
+      line-height: 1.65;
+    }
+
+    /* ── Shared pill ─────────────────────────────────── */
+    .pill {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--frost);
+      border: 0.5px solid #C0D0E8;
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+
+    /* ════════════════════════════════════════════════
+       OPTION 2 — Vertical Timeline
+    ════════════════════════════════════════════════ */
+
+    .opt2 {
+      margin-top: 72px;
+      padding-top: 40px;
+      border-top: 0.5px solid var(--bone);
+    }
+
+    .opt2-step {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      align-items: start;
+    }
+
+    .opt2-marker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 4px;
+    }
+
+    .opt2-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 0.5px solid var(--cobalt);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--cobalt);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .opt2-line {
+      width: 0.5px;
+      flex: 1;
+      min-height: 24px;
+      background: var(--bone);
+    }
+
+    .opt2-content {
+      padding: 0 0 44px 0;
+    }
+
+    .opt2-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      display: block;
+      margin-bottom: 8px;
+      line-height: 32px;
+    }
+
+    .opt2-title {
+      font-size: 22px;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .opt2-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .opt2-we {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+    }
+
+    .opt2-step:last-child .opt2-content { padding-bottom: 0; }
+    .opt2-step:last-child .opt2-line { display: none; }
+
+
+    /* ════════════════════════════════════════════════
+       OPTION 3 — Dark Panel
+    ════════════════════════════════════════════════ */
+
+    .opt3 {
+      margin-top: 72px;
+      padding-top: 40px;
+      border-top: 0.5px solid var(--bone);
+    }
+
+    .opt3-panel {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 40px 40px 36px;
+    }
+
+    .opt3-header {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .opt3-header::before {
+      content: '';
+      width: 20px;
+      height: 0.5px;
+      background: var(--cobalt);
+    }
+
+    .opt3-steps {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 0;
+    }
+
+    .opt3-step {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 24px 24px 20px;
+    }
+
+    .opt3-num {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .opt3-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--canvas);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .opt3-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 16px;
+    }
+
+    .opt3-pill {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(244,241,234,0.6);
+      background: rgba(255,255,255,0.06);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      padding: 4px 9px;
+      border-radius: 100px;
+    }
+
+    .opt3-we {
+      padding-top: 12px;
+      border-top: 0.5px solid rgba(255,255,255,0.07);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+    }
+
+    .opt3-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      padding: 0 16px;
+    }
+
+    .opt3-feeds {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(244,241,234,0.2);
+      white-space: nowrap;
+    }
+
+    .opt3-arrow {
+      color: var(--cobalt);
+      font-size: 18px;
+    }
+
+
+    /* ════════════════════════════════════════════════
+       OPTION 4 — Large Numbered Cards
+    ════════════════════════════════════════════════ */
+
+    .opt4 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 72px;
+      padding-top: 40px;
+      border-top: 0.5px solid var(--bone);
+    }
+
+    .opt4-card {
+      background: var(--white);
+      border: 0.5px solid var(--bone);
+      border-radius: 12px;
+      padding: 32px 28px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .opt4-big-num {
+      font-size: 80px;
+      font-weight: 200;
+      letter-spacing: -0.05em;
+      color: var(--bone);
+      line-height: 0.85;
+      margin-bottom: 28px;
+    }
+
+    .opt4-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .opt4-title {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .opt4-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      flex: 1;
+      align-content: flex-start;
+      padding-bottom: 20px;
+    }
+
+    .opt4-we {
+      padding-top: 16px;
+      border-top: 0.5px solid var(--bone);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ══ OPTION 2 ══════════════════════════════════════════════════ -->
+  <div class="preview-section">
+    <div class="preview-bar">
+      <div class="preview-bar-inner">
+        <span class="preview-bar-num">OPTION 2</span>
+        <div class="preview-bar-sep"></div>
+        <span class="preview-bar-name">Vertical Timeline</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="stub">
+        <div class="stub-headline">AI For Legal Tech.<br/><em>Solved.</em></div>
+        <div class="stub-sub">Most Law Firms Buy AI Before They're Ready. The Fix Starts With the Foundation.</div>
+      </div>
+      <div class="opt2">
+
+        <div class="opt2-step">
+          <div class="opt2-marker">
+            <div class="opt2-circle">01</div>
+            <div class="opt2-line"></div>
+          </div>
+          <div class="opt2-content">
+            <span class="opt2-eyebrow">Data Foundation</span>
+            <div class="opt2-title">Fix Your Data First</div>
+            <div class="opt2-pills">
+              <span class="pill">Documents</span>
+              <span class="pill">Knowledge base</span>
+              <span class="pill">Metadata</span>
+              <span class="pill">Data governance</span>
+            </div>
+            <div class="opt2-we">We build this foundation with you</div>
+          </div>
+        </div>
+
+        <div class="opt2-step">
+          <div class="opt2-marker">
+            <div class="opt2-circle">02</div>
+            <div class="opt2-line"></div>
+          </div>
+          <div class="opt2-content">
+            <span class="opt2-eyebrow">Model Selection</span>
+            <div class="opt2-title">Choose the Right Model</div>
+            <div class="opt2-pills">
+              <span class="pill">Vendor tools</span>
+              <span class="pill">Custom builds</span>
+              <span class="pill">Budget-matched</span>
+              <span class="pill">Practice area fit</span>
+            </div>
+            <div class="opt2-we">We find & deploy the right fit</div>
+          </div>
+        </div>
+
+        <div class="opt2-step">
+          <div class="opt2-marker">
+            <div class="opt2-circle">03</div>
+            <div class="opt2-line"></div>
+          </div>
+          <div class="opt2-content">
+            <span class="opt2-eyebrow">Execution</span>
+            <div class="opt2-title">AI That Pays for Itself</div>
+            <div class="opt2-pills">
+              <span class="pill">Faster turnaround</span>
+              <span class="pill">Fewer write-offs</span>
+              <span class="pill">Associate leverage</span>
+              <span class="pill">Competitive edge</span>
+            </div>
+            <div class="opt2-we">Your team, amplified</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ OPTION 3 ══════════════════════════════════════════════════ -->
+  <div class="preview-section">
+    <div class="preview-bar">
+      <div class="preview-bar-inner">
+        <span class="preview-bar-num">OPTION 3</span>
+        <div class="preview-bar-sep"></div>
+        <span class="preview-bar-name">Dark Panel</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="stub">
+        <div class="stub-headline">AI For Legal Tech.<br/><em>Solved.</em></div>
+        <div class="stub-sub">Most Law Firms Buy AI Before They're Ready. The Fix Starts With the Foundation.</div>
+      </div>
+      <div class="opt3">
+        <div class="opt3-panel">
+          <div class="opt3-header">The AI Readiness Sequence</div>
+          <div class="opt3-steps">
+
+            <div class="opt3-step">
+              <span class="opt3-num">01 — Data Foundation</span>
+              <div class="opt3-title">Fix Your Data First</div>
+              <div class="opt3-pills">
+                <span class="opt3-pill">Documents</span>
+                <span class="opt3-pill">Knowledge base</span>
+                <span class="opt3-pill">Metadata</span>
+                <span class="opt3-pill">Data governance</span>
+              </div>
+              <div class="opt3-we">We build this with you</div>
+            </div>
+
+            <div class="opt3-connector">
+              <span class="opt3-feeds">feeds into</span>
+              <span class="opt3-arrow">→</span>
+            </div>
+
+            <div class="opt3-step">
+              <span class="opt3-num">02 — Model Selection</span>
+              <div class="opt3-title">Choose the Right Model</div>
+              <div class="opt3-pills">
+                <span class="opt3-pill">Vendor tools</span>
+                <span class="opt3-pill">Custom builds</span>
+                <span class="opt3-pill">Budget-matched</span>
+                <span class="opt3-pill">Practice area fit</span>
+              </div>
+              <div class="opt3-we">We find & deploy the fit</div>
+            </div>
+
+            <div class="opt3-connector">
+              <span class="opt3-feeds">delivers</span>
+              <span class="opt3-arrow">→</span>
+            </div>
+
+            <div class="opt3-step">
+              <span class="opt3-num">03 — Execution</span>
+              <div class="opt3-title">AI That Pays for Itself</div>
+              <div class="opt3-pills">
+                <span class="opt3-pill">Faster turnaround</span>
+                <span class="opt3-pill">Fewer write-offs</span>
+                <span class="opt3-pill">Associate leverage</span>
+                <span class="opt3-pill">Competitive edge</span>
+              </div>
+              <div class="opt3-we">Your team, amplified</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ OPTION 4 ══════════════════════════════════════════════════ -->
+  <div class="preview-section">
+    <div class="preview-bar">
+      <div class="preview-bar-inner">
+        <span class="preview-bar-num">OPTION 4</span>
+        <div class="preview-bar-sep"></div>
+        <span class="preview-bar-name">Large Numbered Cards</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="stub">
+        <div class="stub-headline">AI For Legal Tech.<br/><em>Solved.</em></div>
+        <div class="stub-sub">Most Law Firms Buy AI Before They're Ready. The Fix Starts With the Foundation.</div>
+      </div>
+      <div class="opt4">
+
+        <div class="opt4-card">
+          <div class="opt4-big-num">01</div>
+          <span class="opt4-eyebrow">Data Foundation</span>
+          <div class="opt4-title">Fix Your Data First</div>
+          <div class="opt4-pills">
+            <span class="pill">Documents</span>
+            <span class="pill">Knowledge base</span>
+            <span class="pill">Metadata</span>
+            <span class="pill">Data governance</span>
+          </div>
+          <div class="opt4-we">We build this with you</div>
+        </div>
+
+        <div class="opt4-card">
+          <div class="opt4-big-num">02</div>
+          <span class="opt4-eyebrow">Model Selection</span>
+          <div class="opt4-title">Choose the Right Model</div>
+          <div class="opt4-pills">
+            <span class="pill">Vendor tools</span>
+            <span class="pill">Custom builds</span>
+            <span class="pill">Budget-matched</span>
+            <span class="pill">Practice area fit</span>
+          </div>
+          <div class="opt4-we">We find & deploy the fit</div>
+        </div>
+
+        <div class="opt4-card">
+          <div class="opt4-big-num">03</div>
+          <span class="opt4-eyebrow">Execution</span>
+          <div class="opt4-title">AI That Pays for Itself</div>
+          <div class="opt4-pills">
+            <span class="pill">Faster turnaround</span>
+            <span class="pill">Fewer write-offs</span>
+            <span class="pill">Associate leverage</span>
+            <span class="pill">Competitive edge</span>
+          </div>
+          <div class="opt4-we">Your team, amplified</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

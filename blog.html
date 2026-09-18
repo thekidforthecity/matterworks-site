@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- SEO -->
+  <title>Blog — MatterWorks</title>
+  <meta name="description" content="Thoughts on legal technology, AI, and what it actually takes to build solutions that work for legal teams and law firms."/>
+  <link rel="canonical" href="https://matterworks.legal/blog"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Blog — MatterWorks"/>
+  <meta property="og:description" content="Thoughts on legal technology, AI, and what it actually takes to build solutions that work for legal teams and law firms."/>
+  <meta property="og:url" content="https://matterworks.legal/blog"/>
+  <meta property="og:site_name" content="MatterWorks"/>
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EK0DGQDHB0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EK0DGQDHB0');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --navy:   #0F2D5A;
+      --cobalt: #1A6BCC;
+      --frost:  #E8EFF8;
+      --canvas: #F4F1EA;
+      --bone:   #DDD9D0;
+      --ink:    #0F1C2E;
+      --stone:  #7A8A9A;
+      --white:  #FFFFFF;
+      --font-sans: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: 0.22s var(--ease-out);
+      --max-w: 1120px;
+      --pad-x: clamp(24px, 5vw, 80px);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--canvas);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      border-bottom: 0.5px solid var(--bone);
+      background: var(--canvas);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-wordmark {
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+    }
+    .nav-wordmark b { font-weight: 500; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--stone);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); }
+
+    .btn-nav {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--canvas);
+      background: var(--navy);
+      padding: 9px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-nav:hover {
+      background: var(--cobalt);
+      transform: translateY(-1px);
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      border-bottom: 0.5px solid var(--bone);
+      padding: 64px var(--pad-x) 56px;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.1s forwards;
+    }
+
+    .page-header-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .page-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .page-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--cobalt);
+    }
+
+    .page-title {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 200;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+
+    .page-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--cobalt);
+    }
+
+    .page-count {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--stone);
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      padding-bottom: 6px;
+    }
+
+    /* ── POST LIST ── */
+    main {
+      flex: 1;
+      padding: 0 var(--pad-x) 80px;
+    }
+
+    .post-list {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    /* Featured post (first) */
+    .post-featured {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-bottom: 0.5px solid var(--bone);
+      padding: 56px 0;
+      text-decoration: none;
+      color: inherit;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.25s forwards;
+      transition: opacity var(--transition);
+    }
+
+    .post-featured:hover .post-featured-title {
+      color: var(--cobalt);
+    }
+
+    .post-featured:hover .post-read-more {
+      color: var(--cobalt);
+      gap: 10px;
+    }
+
+    .post-featured-meta {
+      padding-right: 64px;
+      border-right: 0.5px solid var(--bone);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .post-featured-content {
+      padding-left: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .post-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      margin-bottom: 20px;
+    }
+
+    .post-featured-title {
+      font-size: clamp(22px, 2.8vw, 32px);
+      font-weight: 200;
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 20px;
+      transition: color var(--transition);
+    }
+
+    .post-excerpt {
+      font-size: 14px;
+      color: var(--stone);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .post-author-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .post-avatar-sm {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--bone);
+    }
+
+    .post-avatar-sm img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(100%);
+    }
+
+    .post-author-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .post-author-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .post-date-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--stone);
+      letter-spacing: 0.04em;
+    }
+
+    .post-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--stone);
+      transition: color var(--transition), gap var(--transition);
+    }
+
+    .featured-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 24px;
+    }
+
+    .featured-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--cobalt);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-wordmark {
+      font-size: 15px;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      color: rgba(244, 241, 234, 0.6);
+    }
+    .footer-wordmark b { font-weight: 500; color: var(--canvas); }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(244, 241, 234, 0.2);
+      letter-spacing: 0.06em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .post-featured {
+        grid-template-columns: 1fr;
+      }
+      .post-featured-meta {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 0.5px solid var(--bone);
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+      }
+      .post-featured-content {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
+          <rect width="56" height="56" rx="11" fill="#0F2D5A"/>
+          <rect x="10" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <rect x="40.5" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <polygon points="10,10 15.5,10 28,25 22.5,25" fill="#F4F1EA"/>
+          <polygon points="46,10 40.5,10 28,25 33.5,25" fill="#F4F1EA"/>
+          <rect x="10" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <rect x="40.5" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="10,46 15.5,46 28,31 22.5,31" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="46,46 40.5,46 28,31 33.5,31" fill="#F4F1EA" opacity="0.38"/>
+        </svg>
+        <span class="nav-wordmark">matter<b>works</b></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#who">Who we help</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="index.html#contact" class="btn-nav">Work with us →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div>
+        <div class="page-eyebrow">MatterWorks</div>
+        <h1 class="page-title">Thinking out<br/>loud on <em>legal tech.</em></h1>
+      </div>
+      <div class="page-count">1 post</div>
+    </div>
+  </header>
+
+  <!-- POST LIST -->
+  <main>
+    <div class="post-list">
+
+      <a href="claude-legal-post.html" class="post-featured">
+        <div class="post-featured-meta">
+          <div>
+            <div class="featured-label"><span class="featured-dot"></span> Latest</div>
+            <div class="post-tag">Legal Tech · AI</div>
+          </div>
+          <div class="post-author-row">
+            <div class="post-avatar-sm">
+              <img src="max-photo.png" alt="Max O'Rourke"/>
+            </div>
+            <div class="post-author-info">
+              <span class="post-author-name">Max O'Rourke</span>
+              <span class="post-date-label">May 13, 2025 · 6 min read</span>
+            </div>
+          </div>
+        </div>
+        <div class="post-featured-content">
+          <div>
+            <h2 class="post-featured-title">Claude Legal just launched. Here's what actually matters for your legal team.</h2>
+            <p class="post-excerpt">There's a lot of noise around Anthropic's launch of Claude Legal. Here's an honest read on what was released, what it means for in-house legal functions and law firms, and what you can safely ignore for now.</p>
+          </div>
+          <span class="post-read-more">Read post →</span>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 56 56" fill="none">
+          <rect width="56" height="56" rx="11" fill="#1A6BCC"/>
+          <rect x="10" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <rect x="40.5" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <polygon points="10,10 15.5,10 28,25 22.5,25" fill="#F4F1EA"/>
+          <polygon points="46,10 40.5,10 28,25 33.5,25" fill="#F4F1EA"/>
+          <rect x="10" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <rect x="40.5" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="10,46 15.5,46 28,31 22.5,31" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="46,46 40.5,46 28,31 33.5,31" fill="#F4F1EA" opacity="0.38"/>
+        </svg>
+        <span class="footer-wordmark">matter<b>works</b></span>
+      </div>
+      <div class="footer-copy">© 2025 MatterWorks · matterworks.legal</div>
+    </div>
+  </footer>
+
+</body>
+</html>

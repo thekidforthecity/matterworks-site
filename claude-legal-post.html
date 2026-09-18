@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- SEO -->
+  <title>Claude Legal Just Launched. Here's What Actually Matters for Your Legal Team. - MatterWorks</title>
+  <meta name="description" content="Anthropic launched Claude Legal with native integrations into DocuSign, Ironclad, iManage, Relativity, and Westlaw. Here's an honest read on what it means for in-house legal teams and law firms - and where to pump the brakes."/>
+  <meta name="author" content="Max O'Rourke"/>
+  <link rel="canonical" href="https://matterworks.legal/blog/claude-legal-launch"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Claude Legal Just Launched. Here's What Actually Matters for Your Legal Team."/>
+  <meta property="og:description" content="An honest read on Anthropic's Claude Legal launch - what was released, what it means for in-house legal functions, and what you can safely ignore for now."/>
+  <meta property="og:url" content="https://matterworks.legal/blog/claude-legal-launch"/>
+  <meta property="og:site_name" content="MatterWorks"/>
+  <meta property="article:author" content="Max O'Rourke"/>
+  <meta property="article:published_time" content="2025-05-13"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Claude Legal Just Launched. Here's What Actually Matters for Your Legal Team."/>
+  <meta name="twitter:description" content="An honest read on Anthropic's Claude Legal launch - what was released, what it means for in-house legal functions, and what you can safely ignore for now."/>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Claude Legal Just Launched. Here's What Actually Matters for Your Legal Team.",
+    "description": "An honest read on Anthropic's Claude Legal launch - what was released, what it means for in-house legal functions, and what you can safely ignore for now.",
+    "author": {
+      "@type": "Person",
+      "name": "Max O'Rourke"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MatterWorks",
+      "url": "https://matterworks.legal"
+    },
+    "datePublished": "2025-05-13",
+    "url": "https://matterworks.legal/blog/claude-legal-launch",
+    "keywords": ["legal tech", "Claude Legal", "Anthropic", "legal AI", "legal operations", "in-house legal"]
+  }
+  </script>
+
+  <!-- GA4 Placeholder - replace G-XXXXXXXXXX with your Measurement ID -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script> -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --navy:   #0F2D5A;
+      --cobalt: #1A6BCC;
+      --frost:  #E8EFF8;
+      --canvas: #F4F1EA;
+      --bone:   #DDD9D0;
+      --ink:    #0F1C2E;
+      --stone:  #7A8A9A;
+      --white:  #FFFFFF;
+      --font-sans: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: 0.22s var(--ease-out);
+      --max-w: 1120px;
+      --prose-w: 680px;
+      --pad-x: clamp(24px, 5vw, 80px);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--canvas);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      border-bottom: 0.5px solid var(--bone);
+      background: var(--canvas);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-wordmark {
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+    }
+    .nav-wordmark b { font-weight: 500; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--stone);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); }
+
+    .btn-nav {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--canvas);
+      background: var(--navy);
+      padding: 9px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-nav:hover {
+      background: var(--cobalt);
+      transform: translateY(-1px);
+    }
+
+    /* ── ARTICLE LAYOUT ── */
+    main {
+      flex: 1;
+    }
+
+    /* Hero */
+    .post-hero {
+      border-bottom: 0.5px solid var(--bone);
+      padding: 72px var(--pad-x) 64px;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.1s forwards;
+    }
+
+    .post-hero-inner {
+      max-width: var(--prose-w);
+      margin: 0 auto;
+    }
+
+    .post-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .post-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--cobalt);
+    }
+
+    .post-title {
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 200;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+
+    .post-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--cobalt);
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .post-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--bone);
+    }
+
+    .post-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(100%);
+    }
+
+    .post-meta-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .post-author {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--stone);
+      letter-spacing: 0.06em;
+    }
+
+    /* Prose */
+    .post-body {
+      padding: 64px var(--pad-x) 80px;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.3s forwards;
+    }
+
+    .post-body-inner {
+      max-width: var(--prose-w);
+      margin: 0 auto;
+    }
+
+    .prose p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .prose h2 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin: 52px 0 16px;
+      padding-top: 52px;
+      border-top: 0.5px solid var(--bone);
+    }
+
+    .prose h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .prose strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .prose em {
+      font-style: italic;
+      color: var(--cobalt);
+    }
+
+    .prose hr {
+      border: none;
+      border-top: 0.5px solid var(--bone);
+      margin: 48px 0;
+    }
+
+    .prose ul {
+      list-style: none;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .prose ul li {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--ink);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .prose ul li::before {
+      content: '-';
+      color: var(--cobalt);
+      font-weight: 400;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .callout {
+      background: var(--frost);
+      border-left: 2px solid var(--cobalt);
+      border-radius: 0 6px 6px 0;
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--navy);
+    }
+
+    /* Closing / signature */
+    .post-sign-off {
+      margin-top: 52px;
+      padding-top: 40px;
+      border-top: 0.5px solid var(--bone);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .post-sign-off-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--bone);
+    }
+
+    .post-sign-off-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(100%);
+    }
+
+    .post-sign-off-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .post-sign-off-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .post-sign-off-role {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--stone);
+      letter-spacing: 0.06em;
+    }
+
+    /* CTA strip */
+    .post-cta {
+      background: var(--navy);
+      padding: 64px var(--pad-x);
+      text-align: center;
+    }
+
+    .post-cta-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .post-cta-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    .post-cta h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 200;
+      letter-spacing: -0.04em;
+      color: var(--canvas);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .post-cta h2 em {
+      font-style: italic;
+      color: #6BAEE8;
+    }
+
+    .post-cta p {
+      font-size: 14px;
+      color: rgba(244,241,234,0.55);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--canvas);
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-cta:hover {
+      background: white;
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-wordmark {
+      font-size: 15px;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      color: rgba(244, 241, 234, 0.6);
+    }
+    .footer-wordmark b { font-weight: 500; color: var(--canvas); }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(244, 241, 234, 0.2);
+      letter-spacing: 0.06em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .post-title { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
+          <rect width="56" height="56" rx="11" fill="#0F2D5A"/>
+          <rect x="10" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <rect x="40.5" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <polygon points="10,10 15.5,10 28,25 22.5,25" fill="#F4F1EA"/>
+          <polygon points="46,10 40.5,10 28,25 33.5,25" fill="#F4F1EA"/>
+          <rect x="10" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <rect x="40.5" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="10,46 15.5,46 28,31 22.5,31" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="46,46 40.5,46 28,31 33.5,31" fill="#F4F1EA" opacity="0.38"/>
+        </svg>
+        <span class="nav-wordmark">matter<b>works</b></span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#who">Who we help</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="index.html#contact" class="btn-nav">Work with us →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <header class="post-hero">
+      <div class="post-hero-inner">
+        <div class="post-eyebrow">Legal Tech · AI</div>
+        <h1 class="post-title">Claude Legal just launched.<br/>Here's what actually matters<br/>for your legal team.</h1>
+        <div class="post-meta">
+          <div class="post-avatar">
+            <img src="max-photo.png" alt="Max O'Rourke"/>
+          </div>
+          <div class="post-meta-text">
+            <span class="post-author">Max O'Rourke</span>
+            <span class="post-date">May 13, 2025 · 6 min read</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- BODY -->
+    <article class="post-body">
+      <div class="post-body-inner">
+        <div class="prose">
+
+          <p>There's a lot of noise around Anthropic's launch of Claude Legal. I wanted to cut through it and give you a clear read on what was released, what it actually means for in-house legal functions and law firms, and - maybe more importantly - what you can safely ignore for now.</p>
+
+          <h2>So, what did they actually launch?</h2>
+
+          <p><strong>Native integrations with the tools legal teams already use.</strong> Claude now connects directly to DocuSign, Ironclad, iManage, NetDocs, Relativity, Everlaw, and Westlaw. For legal ops, this is the meaningful part - it's the difference between AI as a chat interface and AI that actually touches your workflows.</p>
+
+          <p><strong>Practice-area plugins that learn your playbook.</strong> During an onboarding setup, the plugins are designed to learn a team's processes, escalation chains, and risk calibration. In theory, that means outputs tailored to how your team actually operates - not generic boilerplate.</p>
+
+          <p><strong>Microsoft Office integration with shared context across apps.</strong> This one got less attention in the launch coverage, but it's worth a look. A lawyer redlining a contract in Word shouldn't have to re-explain the deal when drafting the cover email in Outlook. This integration is designed to fix exactly that.</p>
+
+          <h2>What does this mean for your legal team right now?</h2>
+
+          <p>Honestly, not much - yet. This is a platform play, not a plug-and-play solution. The connectors require systems to be configured, playbooks to be documented, and governance questions to be answered before any of this delivers real value. Legal ops teams that have already been doing that foundational work are the ones who will move fastest here.</p>
+
+          <p>The more immediate signal is about <strong>vendor direction</strong>. If your contract lifecycle system, e-discovery platform, or document management tool is now building natively toward Claude, that should inform how you evaluate and renew those relationships. It's worth asking your vendors directly how they're thinking about this.</p>
+
+          <h2>Where is the puck going?</h2>
+
+          <p>With my New York Rangers out of the playoffs for the second straight year, I've got plenty of time to keep an eye on where things are headed. Three things worth watching closely:</p>
+
+          <ul>
+            <li><strong>Contract review at scale.</strong> AI helping lawyers do a first-pass review against a known playbook is proven to work - just look at Legora's most recent valuation. The Ironclad and DocuSign integrations are what I'd take most seriously from this launch, because that's where the majority of the workflow lives.</li>
+            <li><strong>Regulatory monitoring.</strong> The plugin is designed to automatically scan for new regulatory developments and surface only what's relevant to your team. For practices operating across multiple markets and jurisdictions, this is a genuine use case. Whether the output is reliable at scale is still an open question - but directionally, I think it gets there.</li>
+            <li><strong>Legal aid and access to justice.</strong> Anthropic is partnering with legal aid organizations to build free tools for people who can't afford legal representation. This won't affect your practice directly, but it's a signal worth noting. Like law firm pro bono commitments, there's a PR dimension to it - but it reflects where these AI companies are headed and what they've promised publicly.</li>
+          </ul>
+
+          <h2>Where to pump the brakes</h2>
+
+          <p>The 12 practice-area plugins are promising in concept, but "learns your playbook" assumes the playbook is documented and current. That's often the gap. AI amplifies what's already there - it doesn't create institutional knowledge from scratch. Be cautious about any vendor pitching this as a quick win without a real change management conversation attached to it.</p>
+
+          <p>The Microsoft Office integration is the same story. Useful in theory, but getting practicing lawyers to trust it takes time and adoption effort that vendors tend to underestimate.</p>
+
+          <div class="callout">
+            <p>Any tool that touches sensitive legal data - contracts, M&A information, regulatory filings - needs to go through proper security review, data and AI governance sign-off, and an enterprise agreement before it connects to your systems. Don't skip this step.</p>
+          </div>
+
+          <p>This is worth understanding clearly: the value of Claude Legal is that it connects to your existing systems. The moment those connections go live, your matter history, contract data, and deal documents are flowing through Anthropic's infrastructure. That's fundamentally different from a deployment model where the model comes to your data inside a walled environment. Here, your data goes to the model - and that line can't be crossed without a serious enterprise agreement in place.</p>
+
+          <h2>Bottom line</h2>
+
+          <p>This is a meaningful step for the legal tech space, but not a reason to rush toward anything. The teams and firms that benefit first will be the ones who've already done the foundational work - documented playbooks, clean data, governance frameworks in place.</p>
+
+          <p>For now, awareness is the right posture. With a healthy amount of skepticism and a willingness to ask the honest question: <em>does it actually work?</em></p>
+
+          <p>If you want to dig into any of this further, <a href="mailto:max@matterworks.legal" style="color: var(--cobalt); text-decoration: none; border-bottom: 1px solid var(--cobalt);">reach out directly</a>.</p>
+
+        </div>
+
+        <!-- Sign-off -->
+        <div class="post-sign-off">
+          <div class="post-sign-off-avatar">
+            <img src="max-photo.png" alt="Max O'Rourke"/>
+          </div>
+          <div class="post-sign-off-text">
+            <span class="post-sign-off-name">Max O'Rourke</span>
+            <span class="post-sign-off-role">MatterWorks · matterworks.legal</span>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CTA -->
+    <section class="post-cta">
+      <div class="post-cta-inner">
+        <div class="post-cta-eyebrow">MatterWorks</div>
+        <h2>Legal tech,<br/><em>solved.</em></h2>
+        <p>We help legal teams and law firms cut through the noise and build solutions that actually work. Let's talk.</p>
+        <a href="index.html#contact" class="btn-cta">Work with us →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 56 56" fill="none">
+          <rect width="56" height="56" rx="11" fill="#1A6BCC"/>
+          <rect x="10" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <rect x="40.5" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <polygon points="10,10 15.5,10 28,25 22.5,25" fill="#F4F1EA"/>
+          <polygon points="46,10 40.5,10 28,25 33.5,25" fill="#F4F1EA"/>
+          <rect x="10" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <rect x="40.5" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="10,46 15.5,46 28,31 22.5,31" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="46,46 40.5,46 28,31 33.5,31" fill="#F4F1EA" opacity="0.38"/>
+        </svg>
+        <span class="footer-wordmark">matter<b>works</b></span>
+      </div>
+      <div class="footer-copy">© 2025 MatterWorks · matterworks.legal</div>
+    </div>
+  </footer>
+
+</body>
+</html>
