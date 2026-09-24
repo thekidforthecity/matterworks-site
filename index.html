@@ -1126,6 +1126,19 @@
     }
     .footer-wordmark b { font-weight: 500; color: var(--canvas); }
 
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer-address {
+      font-style: normal;
+      font-size: 12px;
+      line-height: 1.6;
+      color: rgba(244, 241, 234, 0.35);
+    }
+
     .footer-links {
       display: flex;
       gap: 28px;
@@ -1664,6 +1677,7 @@
   <footer>
     <div class="container">
       <div class="footer-inner">
+        <div class="footer-brand">
         <div class="footer-logo">
           <svg width="22" height="22" viewBox="0 0 56 56" fill="none">
             <rect width="56" height="56" rx="11" fill="#1A6BCC"/>
@@ -1677,6 +1691,11 @@
             <polygon points="46,46 40.5,46 28,31 33.5,31" fill="#F4F1EA" opacity="0.38"/>
           </svg>
           <span class="footer-wordmark">matter<b>works</b></span>
+        </div>
+          <address class="footer-address">
+            150 N Michigan Ave, Suite 800<br>
+            Chicago, IL 60601
+          </address>
         </div>
         <div class="footer-links">
           <a href="#services">Services</a>
