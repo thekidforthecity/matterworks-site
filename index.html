@@ -26,6 +26,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
+  <!-- Calendly popup widget -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet"/>
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
   <style>
     /* ── RESET ─────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1098,6 +1102,47 @@
     .form-status.success { color: #1A7A4A; }
     .form-status.error   { color: #CC2200; }
 
+    /* Book-a-call alternative */
+    .contact-book {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 0.5px solid var(--bone);
+    }
+
+    .contact-book-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      margin-bottom: 12px;
+    }
+
+    .contact-book p {
+      font-size: 14px;
+      color: var(--stone);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      max-width: 400px;
+    }
+
+    .form-booking {
+      display: none;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 0.5px solid var(--bone);
+      text-align: center;
+    }
+
+    .form-booking.visible { display: block; }
+
+    .form-booking p {
+      font-size: 14px;
+      color: var(--stone);
+      margin-bottom: 16px;
+    }
+
     /* ── FOOTER ─────────────────────────────────────────────── */
     footer {
       background: var(--ink);
@@ -1636,6 +1681,12 @@
           <span class="eyebrow reveal">Work with us</span>
           <h2 class="section-title reveal reveal-delay-1">Ready to bridge<br/>the gap?</h2>
           <p class="section-body reveal reveal-delay-2">No pitch decks. No lengthy scoping calls. Tell us what you're working on and we'll tell you honestly whether we can help.</p>
+
+          <div class="contact-book reveal reveal-delay-3">
+            <div class="contact-book-label">Or skip the form</div>
+            <p>Rather just talk? Grab a quick intro call directly on our calendar.</p>
+            <a href="https://calendly.com/max-matterworks/matterworks-intro-call" class="btn-secondary js-calendly" target="_blank" rel="noopener">Book an intro call <span class="arrow">→</span></a>
+          </div>
         </div>
 
         <div class="contact-form reveal reveal-delay-2">
@@ -1667,6 +1718,10 @@
               Send message <span class="arrow">→</span>
             </button>
             <div class="form-status" id="formStatus"></div>
+            <div class="form-booking" id="formBooking">
+              <p>Want to lock in a time while you're here?</p>
+              <a href="https://calendly.com/max-matterworks/matterworks-intro-call" class="btn-secondary js-calendly" target="_blank" rel="noopener">Book an intro call <span class="arrow">→</span></a>
+            </div>
           </form>
         </div>
       </div>
@@ -1740,10 +1795,22 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => observer.observe(el));
 
+    // Calendly popup for every "Book an intro call" link; falls back to opening the link if the widget isn't loaded
+    const CALENDLY_URL = 'https://calendly.com/max-matterworks/matterworks-intro-call?hide_gdpr_banner=1';
+    document.querySelectorAll('.js-calendly').forEach(a => {
+      a.addEventListener('click', e => {
+        if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
+          e.preventDefault();
+          Calendly.initPopupWidget({ url: CALENDLY_URL });
+        }
+      });
+    });
+
     // Contact form submission (Vercel serverless function at /api/contact)
     document.getElementById('contactForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       const status = document.getElementById('formStatus');
+      const booking = document.getElementById('formBooking');
       const btn = this.querySelector('.btn-primary');
       const origText = btn.innerHTML;
 
@@ -1751,6 +1818,7 @@
       btn.innerHTML = 'Sending...';
       status.textContent = '';
       status.className = 'form-status';
+      booking.classList.remove('visible');
 
       try {
         const res = await fetch('/api/contact', {
@@ -1763,6 +1831,7 @@
           status.textContent = 'Message sent. We\'ll be in touch within one business day.';
           status.className = 'form-status success';
           this.reset();
+          booking.classList.add('visible');
         } else {
           throw new Error();
         }
