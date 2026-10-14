@@ -1218,15 +1218,36 @@
       .work-stat { text-align: left; min-width: auto; }
 
       .nav-links { display: none; }
+      /* The nav's backdrop-filter makes it the containing block for fixed
+         descendants, so the menu is anchored to the nav's bottom edge with
+         absolute positioning instead of position: fixed. */
       .nav-links.open {
         display: flex;
         flex-direction: column;
-        position: fixed;
-        inset: 64px 0 0;
+        align-items: stretch;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: calc(100vh - 64px);
+        overflow-y: auto;
         background: var(--canvas);
-        padding: 32px var(--pad-x);
-        gap: 24px;
+        border-bottom: 0.5px solid var(--bone);
+        box-shadow: 0 16px 32px rgba(15, 28, 46, 0.08);
+        padding: 24px var(--pad-x) 32px;
+        gap: 0;
         z-index: 99;
+      }
+      .nav-links.open a {
+        font-size: 16px;
+        padding: 14px 0;
+        border-bottom: 0.5px solid var(--bone);
+      }
+      .nav-links.open a.btn-nav {
+        margin-top: 20px;
+        padding: 13px 18px;
+        border-bottom: none;
+        justify-content: center;
       }
       .nav-mobile-toggle { display: flex; }
     }
