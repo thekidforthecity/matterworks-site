@@ -339,6 +339,62 @@
       background: var(--cobalt);
     }
 
+    /* Earlier posts */
+    .post-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-bottom: 0.5px solid var(--bone);
+      padding: 40px 0;
+      text-decoration: none;
+      color: inherit;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.4s forwards;
+    }
+
+    .post-row:hover .post-row-title {
+      color: var(--cobalt);
+    }
+
+    .post-row:hover .post-read-more {
+      color: var(--cobalt);
+      gap: 10px;
+    }
+
+    .post-row-meta {
+      padding-right: 64px;
+      border-right: 0.5px solid var(--bone);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .post-row-content {
+      padding-left: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .post-row-title {
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 12px;
+      transition: color var(--transition);
+    }
+
+    .post-row .post-excerpt {
+      margin-bottom: 20px;
+    }
+
+    .post-row .post-tag {
+      margin-bottom: 0;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--ink);
@@ -397,6 +453,17 @@
       .post-featured-content {
         padding-left: 0;
       }
+      .post-row {
+        grid-template-columns: 1fr;
+      }
+      .post-row-meta {
+        padding-right: 0;
+        border-right: none;
+        margin-bottom: 20px;
+      }
+      .post-row-content {
+        padding-left: 0;
+      }
     }
   </style>
 </head>
@@ -405,7 +472,7 @@
   <!-- NAV -->
   <nav>
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">
+      <a href="/" class="nav-logo">
         <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
           <rect width="56" height="56" rx="11" fill="#0F2D5A"/>
           <rect x="10" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
@@ -420,11 +487,11 @@
         <span class="nav-wordmark">matter<b>works</b></span>
       </a>
       <div class="nav-links">
-        <a href="index.html#services">Services</a>
-        <a href="index.html#work">Work</a>
-        <a href="index.html#who">Who we help</a>
-        <a href="blog.html" class="active">Blog</a>
-        <a href="index.html#contact" class="btn-nav">Work with us →</a>
+        <a href="/#services">Services</a>
+        <a href="/#work">Work</a>
+        <a href="/#who">Who we help</a>
+        <a href="/blog" class="active">Blog</a>
+        <a href="/#contact" class="btn-nav">Work with us →</a>
       </div>
     </div>
   </nav>
@@ -436,7 +503,7 @@
         <div class="page-eyebrow">MatterWorks</div>
         <h1 class="page-title">Thinking out<br/>loud on <em>legal tech.</em></h1>
       </div>
-      <div class="page-count">1 post</div>
+      <div class="page-count">2 posts</div>
     </div>
   </header>
 
@@ -444,12 +511,34 @@
   <main>
     <div class="post-list">
 
-      <a href="claude-legal-post.html" class="post-featured">
+      <a href="/law-firms-tech-companies" class="post-featured">
         <div class="post-featured-meta">
           <div>
             <div class="featured-label"><span class="featured-dot"></span> Latest</div>
-            <div class="post-tag">Legal Tech · AI</div>
+            <div class="post-tag">Legal Tech · Law Firms</div>
           </div>
+          <div class="post-author-row">
+            <div class="post-avatar-sm">
+              <img src="max-photo.png" alt="Max O'Rourke"/>
+            </div>
+            <div class="post-author-info">
+              <span class="post-author-name">Max O'Rourke</span>
+              <span class="post-date-label">Jun 1, 2026 · 3 min read</span>
+            </div>
+          </div>
+        </div>
+        <div class="post-featured-content">
+          <div>
+            <h2 class="post-featured-title">Law firms are about to become tech companies (whether they like it or not).</h2>
+            <p class="post-excerpt">Kirkland &amp; Ellis is setting aside $500 million to build its own AI platform. Why more firms will follow, why the buy-and-bolt-on stack never fits, and what a product-first approach actually requires.</p>
+          </div>
+          <span class="post-read-more">Read post →</span>
+        </div>
+      </a>
+
+      <a href="/claude-legal-post" class="post-row">
+        <div class="post-row-meta">
+          <div class="post-tag">Legal Tech · AI</div>
           <div class="post-author-row">
             <div class="post-avatar-sm">
               <img src="max-photo.png" alt="Max O'Rourke"/>
@@ -460,9 +549,9 @@
             </div>
           </div>
         </div>
-        <div class="post-featured-content">
+        <div class="post-row-content">
           <div>
-            <h2 class="post-featured-title">Claude Legal just launched. Here's what actually matters for your legal team.</h2>
+            <h2 class="post-row-title">Claude Legal just launched. Here's what actually matters for your legal team.</h2>
             <p class="post-excerpt">There's a lot of noise around Anthropic's launch of Claude Legal. Here's an honest read on what was released, what it means for in-house legal functions and law firms, and what you can safely ignore for now.</p>
           </div>
           <span class="post-read-more">Read post →</span>
@@ -489,7 +578,7 @@
         </svg>
         <span class="footer-wordmark">matter<b>works</b></span>
       </div>
-      <div class="footer-copy">© 2025 MatterWorks · matterworks.legal</div>
+      <div class="footer-copy">© 2026 MatterWorks · matterworks.legal</div>
     </div>
   </footer>
 
