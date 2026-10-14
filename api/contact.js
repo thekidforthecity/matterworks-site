@@ -1,14 +1,12 @@
-// Vercel Serverless Function — replaces Netlify Forms for the contact form.
+// Vercel Serverless Function for the contact form.
 // Runtime: Node.js (default for /api routes, no config needed).
 //
-// Sends the submission by email via Resend (https://resend.com).
-// Requires two environment variables set in the Vercel project:
-//   RESEND_API_KEY   - API key from your Resend account
-//   CONTACT_TO_EMAIL - inbox that should receive submissions (e.g. hello@matterworkslt.com)
-// Optional:
-//   CONTACT_FROM_EMAIL - verified sender address in Resend (defaults to onboarding@resend.dev,
-//                         which works immediately but looks less trustworthy in inboxes;
-//                         verify your own domain in Resend and set this once you can)
+// Forwards each submission to a Google Apps Script web app attached to the
+// "Form Fills" Google Sheet (see google-apps-script/contact-form.gs). The
+// script appends a row to the sheet and emails a notification.
+//
+// Requires one environment variable in the Vercel project:
+//   SHEET_WEBHOOK_URL - the Apps Script web app URL (ends in /exec)
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -34,47 +32,37 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_TO_EMAIL;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL || 'onboarding@resend.dev';
-
-  if (!apiKey || !toEmail) {
-    console.error('Contact form: RESEND_API_KEY or CONTACT_TO_EMAIL is not set');
+  const webhookUrl = process.env.SHEET_WEBHOOK_URL;
+  if (!webhookUrl) {
+    console.error('Contact form: SHEET_WEBHOOK_URL is not set');
     return res.status(500).json({ error: 'Contact form is not configured yet' });
   }
 
   try {
-    const emailRes = await fetch('https://api.resend.com/emails', {
+    // Apps Script answers with a redirect to a googleusercontent URL; fetch follows it.
+    const scriptRes = await fetch(webhookUrl, {
       method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: `MatterWorks Site <${fromEmail}>`,
-        to: [toEmail],
-        reply_to: email,
-        subject: `New contact form submission from ${firstName} ${lastName}`,
-        text: [
-          `Name: ${firstName} ${lastName}`,
-          `Email: ${email}`,
-          `Company: ${company || '(not provided)'}`,
-          '',
-          'Message:',
-          message,
-        ].join('\n'),
-      }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ firstName, lastName, email, company, message }),
+      redirect: 'follow',
     });
 
-    if (!emailRes.ok) {
-      const detail = await emailRes.text();
-      console.error('Resend API error:', emailRes.status, detail);
-      return res.status(502).json({ error: 'Failed to send message' });
+    const text = await scriptRes.text();
+    let result;
+    try {
+      result = JSON.parse(text);
+    } catch {
+      result = null;
+    }
+
+    if (!scriptRes.ok || !result || !result.ok) {
+      console.error('Sheet webhook error:', scriptRes.status, text.slice(0, 500));
+      return res.status(502).json({ error: 'Failed to save message' });
     }
 
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('Contact form send failed:', err);
-    return res.status(500).json({ error: 'Failed to send message' });
+    return res.status(500).json({ error: 'Failed to save message' });
   }
 }

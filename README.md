@@ -19,17 +19,23 @@ Connected to Vercel — push to `main` and it deploys automatically.
 ## Contact form
 
 The contact form posts to `/api/contact` (a Vercel serverless function,
-`api/contact.js`), which sends the submission by email via Resend. It
-requires two environment variables set in the Vercel project (Settings →
-Environment Variables):
+`api/contact.js`), which forwards the submission to a Google Apps Script
+web app attached to the "Form Fills" Google Sheet. The script
+(`google-apps-script/contact-form.gs`) appends a row to the sheet and emails
+a notification to max@matterworks.legal.
 
-- `RESEND_API_KEY` — API key from your Resend account
-- `CONTACT_TO_EMAIL` — inbox that should receive submissions
+The function needs one environment variable in the Vercel project
+(Settings → Environment Variables):
 
-Optional: `CONTACT_FROM_EMAIL` once a sending domain is verified in Resend
-(defaults to `onboarding@resend.dev`). Without `RESEND_API_KEY` and
-`CONTACT_TO_EMAIL` set, submissions will fail with a 500 and the form will
-show its error state.
+- `SHEET_WEBHOOK_URL` — the Apps Script web app URL (ends in `/exec`)
+
+To change the script: open the sheet → Extensions → Apps Script, edit, then
+Deploy → Manage deployments → edit the existing deployment → New version.
+Keeping the same deployment keeps the URL. Without `SHEET_WEBHOOK_URL` set,
+submissions fail with a 500 and the form shows its error state.
+
+The contact section also offers a Calendly "Book an intro call" button as an
+alternative to the form.
 
 This site was previously deployed manually to Netlify via the CLI (not
 git-connected). It's now a standalone git repo deploying to Vercel on

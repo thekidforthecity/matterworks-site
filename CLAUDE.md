@@ -17,20 +17,23 @@ CLI deploys to a git-connected Vercel project.
 - `index.html` — the entire site: HTML, CSS (inline `<style>`), and JS
   (inline `<script>`) in one file. Team headshots are embedded/linked as
   image files alongside it.
-- `blog.html`, `claude-legal-post*.html` — additional static pages.
-- `api/contact.js` — Vercel serverless function that sends contact-form
-  submissions by email via Resend. Requires `RESEND_API_KEY` and
-  `CONTACT_TO_EMAIL` environment variables in the Vercel project (see
-  README.md).
+- `blog.html` (hand-maintained index) and one `*.html` file per post —
+  additional static pages. Clean URLs come from `vercel.json`.
+- `api/contact.js` — Vercel serverless function that forwards contact-form
+  submissions to a Google Apps Script web app, which appends a row to the
+  "Form Fills" Google Sheet and emails a notification. Requires the
+  `SHEET_WEBHOOK_URL` environment variable in the Vercel project.
+- `google-apps-script/contact-form.gs` — source of that Apps Script, kept
+  here for reference; the live copy is deployed from inside the sheet.
 - No `package.json`, no bundler, no build step for the site itself.
 
 ## Deploy
 - Hosted on Vercel, connected to this GitHub repo — pushes to `main`
   auto-deploy.
-- Custom domain: `matterworks.legal` (and/or `matterworkslt.com` — confirm
-  which is canonical and set the other to redirect).
-- Contact form requires `RESEND_API_KEY` and `CONTACT_TO_EMAIL` set in
-  Vercel → Settings → Environment Variables.
+- Custom domain: `matterworks.legal` (DNS at GoDaddy; `www` redirects to
+  apex). Moved off the old Netlify deploy on 2026-10-14.
+- Contact form requires `SHEET_WEBHOOK_URL` set in Vercel → Settings →
+  Environment Variables (see README.md).
 
 ## Conventions when editing
 - Keep it a single static HTML file per page unless explicitly asked to
