@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- SEO -->
+  <title>Law Firms Are About to Become Tech Companies (Whether They Like It or Not) - MatterWorks</title>
+  <meta name="description" content="Kirkland & Ellis is setting aside $500 million to build its own AI platform. Why more firms will follow, why the buy-and-bolt-on stack never fits, and what a product-first approach actually requires."/>
+  <meta name="author" content="Max O'Rourke"/>
+  <link rel="canonical" href="https://matterworks.legal/law-firms-tech-companies"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article"/>
+  <meta property="og:title" content="Law Firms Are About to Become Tech Companies (Whether They Like It or Not)"/>
+  <meta property="og:description" content="Kirkland & Ellis is setting aside $500 million to build its own AI platform. Why more firms will follow, why the buy-and-bolt-on stack never fits, and what a product-first approach actually requires."/>
+  <meta property="og:url" content="https://matterworks.legal/law-firms-tech-companies"/>
+  <meta property="og:site_name" content="MatterWorks"/>
+  <meta property="article:author" content="Max O'Rourke"/>
+  <meta property="article:published_time" content="2026-06-01"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Law Firms Are About to Become Tech Companies (Whether They Like It or Not)"/>
+  <meta name="twitter:description" content="Kirkland & Ellis is setting aside $500 million to build its own AI platform. Why more firms will follow, why the buy-and-bolt-on stack never fits, and what a product-first approach actually requires."/>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Law Firms Are About to Become Tech Companies (Whether They Like It or Not)",
+    "description": "Kirkland & Ellis is setting aside $500 million to build its own AI platform. Why more firms will follow, why the buy-and-bolt-on stack never fits, and what a product-first approach actually requires.",
+    "author": {
+      "@type": "Person",
+      "name": "Max O'Rourke"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "MatterWorks",
+      "url": "https://matterworks.legal"
+    },
+    "datePublished": "2026-06-01",
+    "url": "https://matterworks.legal/law-firms-tech-companies",
+    "keywords": ["legal tech", "law firms", "legal AI", "Kirkland & Ellis", "legal operations", "product management"]
+  }
+  </script>
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EK0DGQDHB0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EK0DGQDHB0');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --navy:   #0F2D5A;
+      --cobalt: #1A6BCC;
+      --frost:  #E8EFF8;
+      --canvas: #F4F1EA;
+      --bone:   #DDD9D0;
+      --ink:    #0F1C2E;
+      --stone:  #7A8A9A;
+      --white:  #FFFFFF;
+      --font-sans: 'DM Sans', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition: 0.22s var(--ease-out);
+      --max-w: 1120px;
+      --prose-w: 680px;
+      --pad-x: clamp(24px, 5vw, 80px);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--canvas);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      border-bottom: 0.5px solid var(--bone);
+      background: var(--canvas);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-wordmark {
+      font-size: 16px;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+    }
+    .nav-wordmark b { font-weight: 500; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--stone);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); }
+
+    .btn-nav {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--canvas);
+      background: var(--navy);
+      padding: 9px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-nav:hover {
+      background: var(--cobalt);
+      transform: translateY(-1px);
+    }
+
+    /* ── ARTICLE LAYOUT ── */
+    main {
+      flex: 1;
+    }
+
+    /* Hero */
+    .post-hero {
+      border-bottom: 0.5px solid var(--bone);
+      padding: 72px var(--pad-x) 64px;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.1s forwards;
+    }
+
+    .post-hero-inner {
+      max-width: var(--prose-w);
+      margin: 0 auto;
+    }
+
+    .post-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cobalt);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .post-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--cobalt);
+    }
+
+    .post-title {
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 200;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 32px;
+    }
+
+    .post-title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--cobalt);
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .post-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--bone);
+    }
+
+    .post-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(100%);
+    }
+
+    .post-meta-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .post-author {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .post-date {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--stone);
+      letter-spacing: 0.06em;
+    }
+
+    /* Prose */
+    .post-body {
+      padding: 64px var(--pad-x) 80px;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.3s forwards;
+    }
+
+    .post-body-inner {
+      max-width: var(--prose-w);
+      margin: 0 auto;
+    }
+
+    .prose p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .prose h2 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      margin: 52px 0 16px;
+      padding-top: 52px;
+      border-top: 0.5px solid var(--bone);
+    }
+
+    .prose h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .prose strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .prose em {
+      font-style: italic;
+      color: var(--cobalt);
+    }
+
+    .prose hr {
+      border: none;
+      border-top: 0.5px solid var(--bone);
+      margin: 48px 0;
+    }
+
+    .prose ul {
+      list-style: none;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .prose ul li {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--ink);
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .prose ul li::before {
+      content: '-';
+      color: var(--cobalt);
+      font-weight: 400;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .callout {
+      background: var(--frost);
+      border-left: 2px solid var(--cobalt);
+      border-radius: 0 6px 6px 0;
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+
+    .callout p {
+      margin: 0;
+      font-size: 15px;
+      color: var(--navy);
+    }
+
+    /* Closing / signature */
+    .post-sign-off {
+      margin-top: 52px;
+      padding-top: 40px;
+      border-top: 0.5px solid var(--bone);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .post-sign-off-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--bone);
+    }
+
+    .post-sign-off-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(100%);
+    }
+
+    .post-sign-off-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .post-sign-off-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .post-sign-off-role {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--stone);
+      letter-spacing: 0.06em;
+    }
+
+    /* CTA strip */
+    .post-cta {
+      background: var(--navy);
+      padding: 64px var(--pad-x);
+      text-align: center;
+    }
+
+    .post-cta-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .post-cta-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    .post-cta h2 {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 200;
+      letter-spacing: -0.04em;
+      color: var(--canvas);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .post-cta h2 em {
+      font-style: italic;
+      color: #6BAEE8;
+    }
+
+    .post-cta p {
+      font-size: 14px;
+      color: rgba(244,241,234,0.55);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--navy);
+      background: var(--canvas);
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-cta:hover {
+      background: white;
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-wordmark {
+      font-size: 15px;
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      color: rgba(244, 241, 234, 0.6);
+    }
+    .footer-wordmark b { font-weight: 500; color: var(--canvas); }
+
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(244, 241, 234, 0.2);
+      letter-spacing: 0.06em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .post-title { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <svg width="28" height="28" viewBox="0 0 56 56" fill="none">
+          <rect width="56" height="56" rx="11" fill="#0F2D5A"/>
+          <rect x="10" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <rect x="40.5" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <polygon points="10,10 15.5,10 28,25 22.5,25" fill="#F4F1EA"/>
+          <polygon points="46,10 40.5,10 28,25 33.5,25" fill="#F4F1EA"/>
+          <rect x="10" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <rect x="40.5" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="10,46 15.5,46 28,31 22.5,31" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="46,46 40.5,46 28,31 33.5,31" fill="#F4F1EA" opacity="0.38"/>
+        </svg>
+        <span class="nav-wordmark">matter<b>works</b></span>
+      </a>
+      <div class="nav-links">
+        <a href="/#services">Services</a>
+        <a href="/#work">Work</a>
+        <a href="/#who">Who we help</a>
+        <a href="/blog" class="active">Blog</a>
+        <a href="/#contact" class="btn-nav">Work with us →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <header class="post-hero">
+      <div class="post-hero-inner">
+        <div class="post-eyebrow">Legal Tech · Law Firms</div>
+        <h1 class="post-title">Law firms are about to become<br/>tech companies <em>(whether they<br/>like it or not).</em></h1>
+        <div class="post-meta">
+          <div class="post-avatar">
+            <img src="max-photo.png" alt="Max O'Rourke"/>
+          </div>
+          <div class="post-meta-text">
+            <span class="post-author">Max O'Rourke</span>
+            <span class="post-date">Jun 1, 2026 · 3 min read</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- BODY -->
+    <article class="post-body">
+      <div class="post-body-inner">
+        <div class="prose">
+
+          <p>In May, Kirkland &amp; Ellis told the Financial Times it is setting aside $500 million to build its own AI platform on proprietary technology. Not license. Not pilot. Build.</p>
+
+          <p>That's a big number even for the most profitable law firm on the planet, and it's the clearest signal yet of where the industry is going. When the firm at the top of the league tables decides the software it needs doesn't exist off the shelf, everyone else starts asking the same question. The problem is that most firms aren't set up to answer it.</p>
+
+          <h2>Law firms buy a lot of software. That's the problem.</h2>
+
+          <p>Walk into any firm and ask to see the tech stack. You'll get a document management system from one vendor, a research tool from another, a contract review platform bolted on two years ago, a billing system nobody likes, and a dozen point solutions that each solve one problem and talk to none of the others. It's less a stack than a pile.</p>
+
+          <p>Buying is the only move available when you don't have builders. The people who make great software, the engineers, product managers, and designers, don't work at law firms. They work at Google, Meta, and Stripe for $500K total comp, or they're raising a seed round. A firm that pays its partners millions still can't compete for a senior engineer, because the firm doesn't have a career path, a product culture, or a reason for that engineer to say yes.</p>
+
+          <h2>So firms run on tools built for someone else</h2>
+
+          <p>Every vendor product is designed for the median customer. That's how vendors make money. But no firm is the median customer. A restructuring practice, a private equity group, and an IP litigation team have almost nothing in common operationally, and they're all running the same software with the same workflows and the same gaps.</p>
+
+          <p>This creates A LOT of expensive workarounds. Associates export to Excel. Paralegals keep shadow spreadsheets. Partners ask for a report that takes three systems and a day to produce. The firm's actual way of working lives in people's heads and inboxes, not in the software, which means it doesn't scale and it walks out the door with every departure. Such a shame :(</p>
+
+          <h2>Kirkland set the tone, now what?</h2>
+
+          <p>More firms are going to follow Kirkland and start building (even if they don't know how to). The AI moment makes it unavoidable: the firms that own their technology will compound an advantage that the firms renting theirs can't match. But the firms that do this well will share one trait. They'll take a product-first approach, not a legal-first one.</p>
+
+          <p>Legal-first means a committee of partners writes requirements, hands them to whoever's available, and wonders why the result feels like every other piece of legal software. Product-first means you start with the user, which is often a second-year associate at 11pm, and you let people who build software for a living decide how it should work. Lawyers like to tell me what the job is, and I have deep empathy and respect for it. But product people by nature are problem solvers and can find ways to do the function much better.</p>
+
+          <p>This requires a cultural shift that will happen faster than most imagine. It means hiring people who've never billed an hour, giving them real authority, and accepting that the first version will be wrong. Ask yourself; do you really know how to build and configure this shit? Or did you just ask ChatGPT.</p>
+
+          <p>Firms that make the shift will start to look a lot more like technology companies that happen to practice law. Firms that don't will keep buying, keep bolting, and keep wondering why the stack never quite fits.</p>
+
+        </div>
+
+        <!-- Sign-off -->
+        <div class="post-sign-off">
+          <div class="post-sign-off-avatar">
+            <img src="max-photo.png" alt="Max O'Rourke"/>
+          </div>
+          <div class="post-sign-off-text">
+            <span class="post-sign-off-name">Max O'Rourke</span>
+            <span class="post-sign-off-role">MatterWorks · matterworks.legal</span>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+    <!-- CTA -->
+    <section class="post-cta">
+      <div class="post-cta-inner">
+        <div class="post-cta-eyebrow">MatterWorks</div>
+        <h2>Legal tech,<br/><em>solved.</em></h2>
+        <p>We help legal teams and law firms cut through the noise and build solutions that actually work. Let's talk.</p>
+        <a href="/#contact" class="btn-cta">Work with us →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 56 56" fill="none">
+          <rect width="56" height="56" rx="11" fill="#1A6BCC"/>
+          <rect x="10" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <rect x="40.5" y="10" width="5.5" height="19" rx="1.5" fill="#F4F1EA"/>
+          <polygon points="10,10 15.5,10 28,25 22.5,25" fill="#F4F1EA"/>
+          <polygon points="46,10 40.5,10 28,25 33.5,25" fill="#F4F1EA"/>
+          <rect x="10" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <rect x="40.5" y="27" width="5.5" height="19" rx="1.5" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="10,46 15.5,46 28,31 22.5,31" fill="#F4F1EA" opacity="0.38"/>
+          <polygon points="46,46 40.5,46 28,31 33.5,31" fill="#F4F1EA" opacity="0.38"/>
+        </svg>
+        <span class="footer-wordmark">matter<b>works</b></span>
+      </div>
+      <div class="footer-copy">© 2026 MatterWorks · matterworks.legal</div>
+    </div>
+  </footer>
+
+</body>
+</html>
